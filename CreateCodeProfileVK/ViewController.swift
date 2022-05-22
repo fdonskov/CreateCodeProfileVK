@@ -86,6 +86,57 @@ class ViewController: UIViewController {
         
         return labelHistory
     }()
+    
+    private lazy var logoButtonNote: UIButton = {
+        let logoButton = UIButton()
+        logoButton.setImage(UIImage(named: "square.and.pencil"), for: .normal)
+        
+        return logoButton
+    }()
+    
+    private lazy var labelNote: UILabel = {
+        let labelHistory = UILabel()
+        labelHistory.font = .systemFont(ofSize: 15)
+        labelHistory.text = "Запись"
+        
+        labelHistory.translatesAutoresizingMaskIntoConstraints = false
+        
+        return labelHistory
+    }()
+    
+    private lazy var logoButtonPhoto: UIButton = {
+        let logoButton = UIButton()
+        logoButton.setImage(UIImage(named: "photo.fill"), for: .normal)
+        
+        return logoButton
+    }()
+    
+    private lazy var labelPhoto: UILabel = {
+        let labelHistory = UILabel()
+        labelHistory.font = .systemFont(ofSize: 15)
+        labelHistory.text = "Фото"
+        
+        labelHistory.translatesAutoresizingMaskIntoConstraints = false
+        
+        return labelHistory
+    }()
+    
+    private lazy var logoButtonClip: UIButton = {
+        let logoButton = UIButton()
+        logoButton.setImage(UIImage(named: "play.rectangle"), for: .normal)
+        
+        return logoButton
+    }()
+    
+    private lazy var labelClip: UILabel = {
+        let labelHistory = UILabel()
+        labelHistory.font = .systemFont(ofSize: 15)
+        labelHistory.text = "Клип"
+        
+        labelHistory.translatesAutoresizingMaskIntoConstraints = false
+        
+        return labelHistory
+    }()
         
     
     // MARK: - Elements stackView
@@ -113,6 +164,53 @@ class ViewController: UIViewController {
         return stackView
     }()
     
+    private lazy var buttonNoteStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.alignment = .center
+        stackView.distribution = .fillEqually
+        stackView.spacing = 5
+                
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        return stackView
+    }()
+    
+    private lazy var buttonPhotoStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.alignment = .center
+        stackView.distribution = .fillEqually
+        stackView.spacing = 5
+                
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        return stackView
+    }()
+    
+    private lazy var buttonClipStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.alignment = .center
+        stackView.distribution = .fillEqually
+        stackView.spacing = 5
+                
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        return stackView
+    }()
+    
+    private lazy var settingsButtonStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.alignment = .center
+        stackView.distribution = .fillEqually
+                
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        return stackView
+    }()
+    
     
     
     // MARK: - viewDidLoad
@@ -125,6 +223,10 @@ class ViewController: UIViewController {
         view.addSubview(descriptionNameStatusStackView)
         view.addSubview(editButton)
         view.addSubview(buttonHistoryStackView)
+        view.addSubview(buttonNoteStackView)
+        view.addSubview(buttonPhotoStackView)
+        view.addSubview(buttonClipStackView)
+        view.addSubview(settingsButtonStackView)
         
         descriptionNameStatusStackView.addArrangedSubview(secondFirstName)
         descriptionNameStatusStackView.addArrangedSubview(createStatus)
@@ -132,6 +234,26 @@ class ViewController: UIViewController {
         
         buttonHistoryStackView.addArrangedSubview(logoButtonHistory)
         buttonHistoryStackView.addArrangedSubview(labelHistory)
+        
+        buttonNoteStackView.addArrangedSubview(logoButtonNote)
+        buttonNoteStackView.addArrangedSubview(labelNote)
+        
+        buttonPhotoStackView.addArrangedSubview(logoButtonPhoto)
+        buttonPhotoStackView.addArrangedSubview(labelPhoto)
+        
+        buttonClipStackView.addArrangedSubview(logoButtonClip)
+        buttonClipStackView.addArrangedSubview(labelClip)
+        
+        settingsButtonStackView.addArrangedSubview(buttonHistoryStackView)
+        settingsButtonStackView.addArrangedSubview(buttonNoteStackView)
+        settingsButtonStackView.addArrangedSubview(buttonPhotoStackView)
+        settingsButtonStackView.addArrangedSubview(buttonClipStackView)
+
+        
+
+
+
+
         
         hierarhyConstraint()
     }
@@ -143,7 +265,7 @@ class ViewController: UIViewController {
         descriptionNameStatusConstraint()
         
         editButtonConstraint()
-        
+        settingsButtonStackViewConstraint()
 //        buttonConstraint()
     }
     
@@ -176,10 +298,19 @@ class ViewController: UIViewController {
         ])
     }
     
+    private func settingsButtonStackViewConstraint() {
+        NSLayoutConstraint.activate([
+            settingsButtonStackView.topAnchor.constraint(equalTo: editButton.bottomAnchor, constant: 20),
+            settingsButtonStackView.leadingAnchor.constraint(equalTo: editButton.leadingAnchor),
+            settingsButtonStackView.trailingAnchor.constraint(equalTo: editButton.trailingAnchor)
+        
+        ])
+    }
+    
 //    private func buttonConstraint() {
 //        NSLayoutConstraint.activate([
-//            buttonHistoryStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-//            buttonHistoryStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+//            buttonClipStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+//            buttonClipStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
 //        ])
 //    }
     
