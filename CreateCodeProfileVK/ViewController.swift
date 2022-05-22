@@ -95,13 +95,13 @@ class ViewController: UIViewController {
     }()
     
     private lazy var labelNote: UILabel = {
-        let labelHistory = UILabel()
-        labelHistory.font = .systemFont(ofSize: 15)
-        labelHistory.text = "Запись"
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 15)
+        label.text = "Запись"
         
-        labelHistory.translatesAutoresizingMaskIntoConstraints = false
+        label.translatesAutoresizingMaskIntoConstraints = false
         
-        return labelHistory
+        return label
     }()
     
     private lazy var logoButtonPhoto: UIButton = {
@@ -112,13 +112,13 @@ class ViewController: UIViewController {
     }()
     
     private lazy var labelPhoto: UILabel = {
-        let labelHistory = UILabel()
-        labelHistory.font = .systemFont(ofSize: 15)
-        labelHistory.text = "Фото"
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 15)
+        label.text = "Фото"
         
-        labelHistory.translatesAutoresizingMaskIntoConstraints = false
+        label.translatesAutoresizingMaskIntoConstraints = false
         
-        return labelHistory
+        return label
     }()
     
     private lazy var logoButtonClip: UIButton = {
@@ -129,13 +129,98 @@ class ViewController: UIViewController {
     }()
     
     private lazy var labelClip: UILabel = {
-        let labelHistory = UILabel()
-        labelHistory.font = .systemFont(ofSize: 15)
-        labelHistory.text = "Клип"
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 15)
+        label.text = "Клип"
         
-        labelHistory.translatesAutoresizingMaskIntoConstraints = false
+        label.translatesAutoresizingMaskIntoConstraints = false
         
-        return labelHistory
+        return label
+    }()
+    
+    private lazy var logoButtonCity: UIButton = {
+        let logoButton = UIButton()
+        logoButton.setImage(UIImage(named: "house"), for: .normal)
+        
+        return logoButton
+    }()
+    
+    private lazy var labelCity: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 15)
+        label.text = "Город: Москва"
+        
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        return label
+    }()
+    
+    private lazy var logoButtonSubscribers: UIButton = {
+        let logoButton = UIButton()
+        logoButton.setImage(UIImage(named: "wifi"), for: .normal)
+        
+        return logoButton
+    }()
+    
+    private lazy var labelSubscribers: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 15)
+        label.text = "35 подписчиков"
+        
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        return label
+    }()
+    
+    private lazy var logoButtonWork: UIButton = {
+        let logoButton = UIButton()
+        logoButton.setImage(UIImage(named: "briefcase"), for: .normal)
+        
+        return logoButton
+    }()
+    
+    private lazy var labelWork: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 15)
+        label.text = "Указать место работы"
+        
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        return label
+    }()
+    
+    private lazy var logoButtonGift: UIButton = {
+        let logoButton = UIButton()
+        logoButton.setImage(UIImage(named: "snowflake"), for: .normal)
+        
+        return logoButton
+    }()
+    
+    private lazy var labelGift: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 15)
+        label.text = "Получить подарок >"
+        
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        return label
+    }()
+    
+    private lazy var logoButtonInfo: UIButton = {
+        let logoButton = UIButton()
+        logoButton.setImage(UIImage(named: "info.circle.fill"), for: .normal)
+        
+        return logoButton
+    }()
+    
+    private lazy var labelInfo: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 15)
+        label.text = "Подробная информация"
+        
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        return label
     }()
         
     
@@ -200,7 +285,7 @@ class ViewController: UIViewController {
         return stackView
     }()
     
-    private lazy var settingsButtonStackView: UIStackView = {
+    private lazy var settingsTopRowButtonsStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.alignment = .center
@@ -211,7 +296,77 @@ class ViewController: UIViewController {
         return stackView
     }()
     
+    private lazy var buttonCityStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.alignment = .leading
+        stackView.spacing = 10
+        stackView.distribution = .equalSpacing
+                
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        return stackView
+    }()
     
+    private lazy var buttonSubscribersStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.alignment = .leading
+        stackView.spacing = 10
+        stackView.distribution = .equalSpacing
+                
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        return stackView
+    }()
+    
+    private lazy var buttonWorkStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.alignment = .leading
+        stackView.spacing = 12
+        stackView.distribution = .equalSpacing
+                
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        return stackView
+    }()
+    
+    private lazy var buttonGiftStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.alignment = .leading
+        stackView.spacing = 15
+        stackView.distribution = .equalSpacing
+                
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        return stackView
+    }()
+    
+    private lazy var buttonInfoStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.alignment = .leading
+        stackView.spacing = 12
+        stackView.distribution = .equalSpacing
+                
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        return stackView
+    }()
+    
+    private lazy var settingsBottomButtonsStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.alignment = .leading
+        stackView.spacing = 8
+        stackView.distribution = .equalSpacing
+                
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        return stackView
+    }()
     
     // MARK: - viewDidLoad
 
@@ -220,13 +375,25 @@ class ViewController: UIViewController {
         view.backgroundColor = UIColor.gray
 
         view.addSubview(imageViewPhoto)
+        
         view.addSubview(descriptionNameStatusStackView)
+        
         view.addSubview(editButton)
+        
         view.addSubview(buttonHistoryStackView)
         view.addSubview(buttonNoteStackView)
         view.addSubview(buttonPhotoStackView)
         view.addSubview(buttonClipStackView)
-        view.addSubview(settingsButtonStackView)
+        
+        view.addSubview(settingsTopRowButtonsStackView)
+        
+        view.addSubview(buttonCityStackView)
+        view.addSubview(buttonSubscribersStackView)
+        view.addSubview(buttonWorkStackView)
+        view.addSubview(buttonGiftStackView)
+        view.addSubview(buttonInfoStackView)
+
+        view.addSubview(settingsBottomButtonsStackView)
         
         descriptionNameStatusStackView.addArrangedSubview(secondFirstName)
         descriptionNameStatusStackView.addArrangedSubview(createStatus)
@@ -244,16 +411,32 @@ class ViewController: UIViewController {
         buttonClipStackView.addArrangedSubview(logoButtonClip)
         buttonClipStackView.addArrangedSubview(labelClip)
         
-        settingsButtonStackView.addArrangedSubview(buttonHistoryStackView)
-        settingsButtonStackView.addArrangedSubview(buttonNoteStackView)
-        settingsButtonStackView.addArrangedSubview(buttonPhotoStackView)
-        settingsButtonStackView.addArrangedSubview(buttonClipStackView)
+        settingsTopRowButtonsStackView.addArrangedSubview(buttonHistoryStackView)
+        settingsTopRowButtonsStackView.addArrangedSubview(buttonNoteStackView)
+        settingsTopRowButtonsStackView.addArrangedSubview(buttonPhotoStackView)
+        settingsTopRowButtonsStackView.addArrangedSubview(buttonClipStackView)
 
         
+        buttonCityStackView.addArrangedSubview(logoButtonCity)
+        buttonCityStackView.addArrangedSubview(labelCity)
 
+        buttonSubscribersStackView.addArrangedSubview(logoButtonSubscribers)
+        buttonSubscribersStackView.addArrangedSubview(labelSubscribers)
 
+        buttonWorkStackView.addArrangedSubview(logoButtonWork)
+        buttonWorkStackView.addArrangedSubview(labelWork)
 
+        buttonGiftStackView.addArrangedSubview(logoButtonGift)
+        buttonGiftStackView.addArrangedSubview(labelGift)
 
+        buttonInfoStackView.addArrangedSubview(logoButtonInfo)
+        buttonInfoStackView.addArrangedSubview(labelInfo)
+
+        settingsBottomButtonsStackView.addArrangedSubview(buttonCityStackView)
+        settingsBottomButtonsStackView.addArrangedSubview(buttonSubscribersStackView)
+        settingsBottomButtonsStackView.addArrangedSubview(buttonWorkStackView)
+        settingsBottomButtonsStackView.addArrangedSubview(buttonGiftStackView)
+        settingsBottomButtonsStackView.addArrangedSubview(buttonInfoStackView)
         
         hierarhyConstraint()
     }
@@ -265,8 +448,8 @@ class ViewController: UIViewController {
         descriptionNameStatusConstraint()
         
         editButtonConstraint()
-        settingsButtonStackViewConstraint()
-//        buttonConstraint()
+        settingsTopButtonsStackViewConstraint()
+        settingsBottomButtonStackViewConstraint()
     }
     
     // MARK: - Constraints elements
@@ -298,21 +481,22 @@ class ViewController: UIViewController {
         ])
     }
     
-    private func settingsButtonStackViewConstraint() {
+    private func settingsTopButtonsStackViewConstraint() {
         NSLayoutConstraint.activate([
-            settingsButtonStackView.topAnchor.constraint(equalTo: editButton.bottomAnchor, constant: 20),
-            settingsButtonStackView.leadingAnchor.constraint(equalTo: editButton.leadingAnchor),
-            settingsButtonStackView.trailingAnchor.constraint(equalTo: editButton.trailingAnchor)
+            settingsTopRowButtonsStackView.topAnchor.constraint(equalTo: editButton.bottomAnchor, constant: 20),
+            settingsTopRowButtonsStackView.leadingAnchor.constraint(equalTo: editButton.leadingAnchor),
+            settingsTopRowButtonsStackView.trailingAnchor.constraint(equalTo: editButton.trailingAnchor)
         
         ])
     }
     
-//    private func buttonConstraint() {
-//        NSLayoutConstraint.activate([
-//            buttonClipStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-//            buttonClipStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
-//        ])
-//    }
+    private func settingsBottomButtonStackViewConstraint() {
+        NSLayoutConstraint.activate([
+            settingsBottomButtonsStackView.topAnchor.constraint(equalTo: settingsTopRowButtonsStackView.bottomAnchor, constant: 20),
+            settingsBottomButtonsStackView.leadingAnchor.constraint(equalTo: settingsTopRowButtonsStackView.leadingAnchor),
+            settingsBottomButtonsStackView.trailingAnchor.constraint(equalTo: settingsTopRowButtonsStackView.trailingAnchor)
+        ])
+    }
     
 }
 
