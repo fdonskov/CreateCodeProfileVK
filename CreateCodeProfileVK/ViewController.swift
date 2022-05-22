@@ -10,8 +10,10 @@ import UIKit
 class ViewController: UIViewController {
     
     private lazy var imageViewPhoto: UIImageView = {
-        let image = UIImageView()
-        image.backgroundColor = .green
+        let imageNew: UIImage = UIImage(named: "sea") ?? UIImage(named: "")!
+        var image = UIImageView()
+        
+        image = UIImageView(image: imageNew)
         
         image.layer.masksToBounds = true
         image.layer.cornerRadius = 50
@@ -34,7 +36,7 @@ class ViewController: UIViewController {
     
     private lazy var createStatus: UILabel = {
         let label = UILabel()
-        label.textColor = .white
+        label.textColor = .systemBlue
         label.font = UIFont.systemFont(ofSize: 17)
         label.text = "Установить статус"
         
@@ -54,12 +56,19 @@ class ViewController: UIViewController {
         return label
     }()
     
+    private lazy var logoButtonDisplayStatus: UIButton = {
+        let logoButton = UIButton()
+        logoButton.setImage(UIImage(named: "iphone.homebutton"), for: .normal)
+        
+        return logoButton
+    }()
+    
     private lazy var editButton: UIButton = {
         let button = UIButton()
         button.setTitle("Редактировать", for: .normal)
         button.setTitleColor(UIColor.white, for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 18, weight: .medium)
-        button.backgroundColor = .systemGreen
+        button.backgroundColor = .darkGray
         
         button.layer.masksToBounds = true
         button.layer.cornerRadius = 18
@@ -78,13 +87,14 @@ class ViewController: UIViewController {
     }()
     
     private lazy var labelHistory: UILabel = {
-        let labelHistory = UILabel()
-        labelHistory.font = .systemFont(ofSize: 15)
-        labelHistory.text = "История"
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 15)
+        label.text = "История"
+        label.textColor = .systemBlue
         
-        labelHistory.translatesAutoresizingMaskIntoConstraints = false
+        label.translatesAutoresizingMaskIntoConstraints = false
         
-        return labelHistory
+        return label
     }()
     
     private lazy var logoButtonNote: UIButton = {
@@ -98,6 +108,7 @@ class ViewController: UIViewController {
         let label = UILabel()
         label.font = .systemFont(ofSize: 15)
         label.text = "Запись"
+        label.textColor = .systemBlue
         
         label.translatesAutoresizingMaskIntoConstraints = false
         
@@ -115,6 +126,7 @@ class ViewController: UIViewController {
         let label = UILabel()
         label.font = .systemFont(ofSize: 15)
         label.text = "Фото"
+        label.textColor = .systemBlue
         
         label.translatesAutoresizingMaskIntoConstraints = false
         
@@ -132,6 +144,7 @@ class ViewController: UIViewController {
         let label = UILabel()
         label.font = .systemFont(ofSize: 15)
         label.text = "Клип"
+        label.textColor = .systemBlue
         
         label.translatesAutoresizingMaskIntoConstraints = false
         
@@ -149,7 +162,8 @@ class ViewController: UIViewController {
         let label = UILabel()
         label.font = .systemFont(ofSize: 15)
         label.text = "Город: Москва"
-        
+        label.textColor = .systemGray
+
         label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
@@ -166,6 +180,7 @@ class ViewController: UIViewController {
         let label = UILabel()
         label.font = .systemFont(ofSize: 15)
         label.text = "35 подписчиков"
+        label.textColor = .systemGray
         
         label.translatesAutoresizingMaskIntoConstraints = false
         
@@ -183,6 +198,7 @@ class ViewController: UIViewController {
         let label = UILabel()
         label.font = .systemFont(ofSize: 15)
         label.text = "Указать место работы"
+        label.textColor = .systemBlue
         
         label.translatesAutoresizingMaskIntoConstraints = false
         
@@ -200,6 +216,7 @@ class ViewController: UIViewController {
         let label = UILabel()
         label.font = .systemFont(ofSize: 15)
         label.text = "Получить подарок >"
+        label.textColor = .systemPurple
         
         label.translatesAutoresizingMaskIntoConstraints = false
         
@@ -217,6 +234,7 @@ class ViewController: UIViewController {
         let label = UILabel()
         label.font = .systemFont(ofSize: 15)
         label.text = "Подробная информация"
+        label.textColor = .white
         
         label.translatesAutoresizingMaskIntoConstraints = false
         
@@ -225,12 +243,22 @@ class ViewController: UIViewController {
         
     
     // MARK: - Elements stackView
+    private lazy var logoDisplayStatusStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.alignment = .leading
+        stackView.distribution = .fillEqually
+        stackView.spacing = -500
+                
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        return stackView
+    }()
     
     private lazy var descriptionNameStatusStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.distribution = .equalSpacing
-        stackView.backgroundColor = .systemMint
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -372,10 +400,17 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.gray
 
+        setupHierarchy()
+        hierarhyConstraint()
+    }
+    
+    // MARK: - Setup View Hierarhy
+    
+    private func setupHierarchy() {
+        view.backgroundColor = UIColor.black
         view.addSubview(imageViewPhoto)
-        
+                
         view.addSubview(descriptionNameStatusStackView)
         
         view.addSubview(editButton)
@@ -395,9 +430,12 @@ class ViewController: UIViewController {
 
         view.addSubview(settingsBottomButtonsStackView)
         
+        logoDisplayStatusStackView.addArrangedSubview(displayStatus)
+        logoDisplayStatusStackView.addArrangedSubview(logoButtonDisplayStatus)
+        
         descriptionNameStatusStackView.addArrangedSubview(secondFirstName)
         descriptionNameStatusStackView.addArrangedSubview(createStatus)
-        descriptionNameStatusStackView.addArrangedSubview(displayStatus)
+        descriptionNameStatusStackView.addArrangedSubview(logoDisplayStatusStackView)
         
         buttonHistoryStackView.addArrangedSubview(logoButtonHistory)
         buttonHistoryStackView.addArrangedSubview(labelHistory)
@@ -437,8 +475,6 @@ class ViewController: UIViewController {
         settingsBottomButtonsStackView.addArrangedSubview(buttonWorkStackView)
         settingsBottomButtonsStackView.addArrangedSubview(buttonGiftStackView)
         settingsBottomButtonsStackView.addArrangedSubview(buttonInfoStackView)
-        
-        hierarhyConstraint()
     }
     
     // MARK: - Hierarhy constraint
@@ -465,7 +501,7 @@ class ViewController: UIViewController {
     
     private func descriptionNameStatusConstraint() {
         NSLayoutConstraint.activate([
-            descriptionNameStatusStackView.leftAnchor.constraint(equalTo: imageViewPhoto.rightAnchor, constant: 10),
+            descriptionNameStatusStackView.leftAnchor.constraint(equalTo: imageViewPhoto.rightAnchor, constant: 20),
             descriptionNameStatusStackView.topAnchor.constraint(equalTo: imageViewPhoto.topAnchor),
             descriptionNameStatusStackView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: -20),
             descriptionNameStatusStackView.bottomAnchor.constraint(equalTo: imageViewPhoto.bottomAnchor)
@@ -497,6 +533,5 @@ class ViewController: UIViewController {
             settingsBottomButtonsStackView.trailingAnchor.constraint(equalTo: settingsTopRowButtonsStackView.trailingAnchor)
         ])
     }
-    
 }
 
